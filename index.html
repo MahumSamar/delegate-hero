@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delegate your project to professionals</title>
+<meta name="description" content="Leave your contact details and we'll get back to you within 12 hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261010_053101_549b0f75-c020-4490-9a05-f6c88aad1a01.png">
+<style>
+  :root {
+    --lavender: #f3f0fc;
+    --ink: #0a0a0a;
+    --paper: #ffffff;
+    --glass: rgba(255, 255, 255, 0.58);
+    --glass-edge: rgba(255, 255, 255, 0.85);
+    --shadow: rgba(76, 58, 140, 0.2);
+
+    --font-display: "League Gothic", "Impact", "Haettenschweiler", sans-serif;
+    --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+    /* Everything scales from the heading size so proportions hold at any width */
+    --h: clamp(4rem, 8.45vw, 14rem);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: var(--lavender);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .hero {
+    position: relative;
+    height: 100vh;
+    height: 100svh;
+    min-height: 34rem;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    padding: 0 1rem;
+    background: var(--lavender);
+    isolation: isolate;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    pointer-events: none;
+  }
+
+  .hero__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* room for the card that floats above the headline */
+    padding-top: calc(var(--h) * 1.1);
+  }
+
+  .hero__card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: calc(var(--h) * 1.62);
+    aspect-ratio: 138 / 122;
+    margin-left: calc(var(--h) * -0.78);
+    display: grid;
+    place-items: center;
+    border-radius: calc(var(--h) * 0.17);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, var(--glass) 55%, rgba(255, 255, 255, 0.4) 100%);
+    border: 1px solid var(--glass-edge);
+    box-shadow:
+      0 calc(var(--h) * 0.22) calc(var(--h) * 0.5) var(--shadow),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+    transform: rotate(9deg);
+    animation: card-float 7s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  .hero__plane {
+    width: 106%;
+    max-width: none;
+    height: auto;
+    transform: rotate(-9deg);
+    animation: plane-drift 7s ease-in-out infinite;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .hero__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--h);
+    line-height: 0.81;
+    letter-spacing: 0;
+    -webkit-text-stroke: 0.02em currentColor;
+    text-wrap: balance;
+  }
+
+  .hero__title span { display: block; }
+
+  .hero__lede {
+    margin: calc(var(--h) * 0.2) 0 0;
+    font-size: clamp(0.875rem, 0.84vw, 1.25rem);
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+
+  }
+
+  .hero__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: clamp(0.875rem, 1.25vw, 1.75rem);
+    min-width: clamp(10.5rem, 12.5vw, 17rem);
+    min-height: clamp(2.625rem, 2.75vw, 3.75rem);
+    padding: 0 1.5em;
+    border-radius: clamp(0.5rem, 0.55vw, 0.75rem);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: clamp(0.75rem, 0.74vw, 1rem);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .hero__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.75rem 1.75rem rgba(10, 10, 10, 0.22);
+  }
+
+  .hero__cta:active { transform: translateY(0); }
+
+  .hero__cta:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+  }
+
+  /* Dot cursor, only where there is a real pointer */
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: clamp(0.625rem, 0.95vw, 1.125rem);
+    aspect-ratio: 1;
+    margin: calc(clamp(0.625rem, 0.95vw, 1.125rem) / -2) 0 0 calc(clamp(0.625rem, 0.95vw, 1.125rem) / -2);
+    border-radius: 50%;
+    background: var(--ink);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, scale 0.2s ease, background-color 0.2s ease;
+    will-change: transform;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hero.has-cursor, .hero.has-cursor a { cursor: none; }
+    .hero.has-cursor .cursor-dot { opacity: 1; }
+    .hero.has-cursor .cursor-dot.is-over-cta {
+      scale: 2.2;
+      background: var(--paper);
+      mix-blend-mode: difference;
+    }
+  }
+
+  @keyframes card-float {
+    0%, 100% { transform: translateY(0) rotate(9deg); }
+    50%      { transform: translateY(-3.5%) rotate(7.5deg); }
+  }
+
+  @keyframes plane-drift {
+    0%, 100% { transform: rotate(-9deg) translate(0, 0); }
+    50%      { transform: rotate(-7.5deg) translate(3%, -4%); }
+  }
+
+  /* Tablet: headline needs more of the width */
+  @media (max-width: 900px) {
+    :root { --h: clamp(4rem, 13.5vw, 8rem); }
+  }
+
+  /* Phone: three-line headline, ribbon recentred behind it */
+  @media (max-width: 600px) {
+    :root { --h: clamp(4rem, 24vw, 9rem); }
+    .hero__bg { object-position: 38% 50%; }
+    .hero__title { line-height: 0.84; }
+    .hero__lede { margin-top: calc(var(--h) * 0.24); max-width: 26ch; }
+    .hero__cta { margin-top: 1.25rem; }
+  }
+
+  /* Short landscape screens */
+  @media (max-height: 560px) and (orientation: landscape) {
+    :root { --h: clamp(2.75rem, 15vh, 6rem); }
+    .hero { min-height: 22rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__card, .hero__plane { animation: none; }
+    .hero__cta { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <video class="hero__bg"
+           autoplay muted loop playsinline preload="auto"
+           aria-hidden="true" tabindex="-1"
+           poster="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261010_053101_549b0f75-c020-4490-9a05-f6c88aad1a01.png">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261010_053209_ad531505-51e2-42e3-8848-debbc0d30f10.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero__content">
+      <div class="hero__card" aria-hidden="true">
+        <img class="hero__plane"
+             src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261010_053214_bc557785-2610-47ad-9311-c48efa0edee9.png"
+             alt="" width="1024" height="688" decoding="async">
+      </div>
+
+      <h1 class="hero__title" id="hero-title">
+        <span>Delegate your project to</span>
+        <span>professionals</span>
+      </h1>
+
+      <p class="hero__lede">Leave your contact details &amp; we'll get back to you within 12&nbsp;hours.</p>
+
+      <a class="hero__cta" href="#contact">Get free consultation</a>
+    </div>
+
+    <div class="cursor-dot" aria-hidden="true"></div>
+  </section>
+</main>
+
+<script>
+  (function () {
+    var hero = document.querySelector('.hero');
+    var dot = hero.querySelector('.cursor-dot');
+    var cta = hero.querySelector('.hero__cta');
+    var video = hero.querySelector('.hero__bg');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Background stays on its poster frame when motion is not wanted
+    function syncMotion() {
+      if (reduceMotion.matches) { video.pause(); }
+      else { var p = video.play(); if (p && p.catch) { p.catch(function () {}); } }
+    }
+    syncMotion();
+    reduceMotion.addEventListener('change', syncMotion);
+
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) { return; }
+
+    var x = 0, y = 0, tx = 0, ty = 0, raf = null;
+
+    function tick() {
+      x += (tx - x) * 0.22;
+      y += (ty - y) * 0.22;
+      dot.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+      raf = (Math.abs(tx - x) + Math.abs(ty - y) > 0.1) ? requestAnimationFrame(tick) : null;
+    }
+
+    hero.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') { return; }
+      tx = e.clientX; ty = e.clientY;
+      if (!hero.classList.contains('has-cursor')) {
+        x = tx; y = ty;
+        hero.classList.add('has-cursor');
+      }
+      if (!raf) { raf = requestAnimationFrame(tick); }
+    });
+
+    hero.addEventListener('pointerleave', function () { hero.classList.remove('has-cursor'); });
+    cta.addEventListener('pointerenter', function () { dot.classList.add('is-over-cta'); });
+    cta.addEventListener('pointerleave', function () { dot.classList.remove('is-over-cta'); });
+  })();
+</script>
+
+</body>
+</html>
